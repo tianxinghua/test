@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shangpin.mapper.item.UpLoadMapper">
+    <!--<resultMap id="BaseResultMap" type="pojo.User">
+        <id column="id" property="userId"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="created_time" property="createTime" jdbcType="DATE" />
+    </resultMap>-->
+    <!--<insert id="excelInsert" parameterType="java.util.List">
+        <foreach collection="excelList" item="excelDto">
+           INSERT INTO
+        </foreach>
+    </insert>-->
+   <!-- <insert id="inserSpu" parameterType="pojo.SpuDto">
+        INSERT INTO ORIGINAL_SPU(spu_id,gender,brand,category,supplier_spu_no,product_model,
+        season,color,pro_name,market_price,domestic_price,sale_price,made,product_desc,
+        pics,detailLink,measurement,supplier_id,supplier_no,channel,create_time) values (#{spuId},
+        #{gender},#{brand},#{category},#{SPU},#{productModel},#{season},#{color},#{proName},
+        #{marketPrice},#{domesticPrice},#{salePrice},#{made},#{productDesc},#{pics},#{detailLink},#{measurement},
+        #{supplierId},#{supplierNo},#{channel},now())
+    </insert>-->
+    <insert id="inserSpu" parameterType="pojo.SpuDto">
+        INSERT INTO ORIGINAL_SPU(spu_id,gender,brand,category,supplier_spu_no,product_model,
+        season,color,pro_name,market_price,domestic_price,sale_price,made,product_desc,pics,detailLink,measurement,supplier_id,supplier_no,channel,create_time,material) values (#{spuId},
+        #{gender},#{brand},#{category},#{SPU},#{productModel},#{season},#{color},#{proName},#{marketPrice},#{domesticPrice},#{salePrice},
+        #{made},#{productDesc},#{pics},#{detailLink},#{measurement},
+        #{supplierId},#{supplierNo},#{channel},now(),#{material})
+    </insert>
+    <insert id="inserSku" parameterType="pojo.SkuDto">
+        INSERT INTO ORIGINAL_SKU(sku_id,channel,supplier_id,supplier_no,supplier_sku_no,create_time,update_time,
+        spu_id,market_price,sale_price,pro_size) values (#{skuId},#{channel},#{supplierId},#{supplierNo},#{supplierSkuNo},
+        now(),now(),#{spuId},#{marketPrice},#{salePrice},#{size})
+    </insert>
+</mapper>

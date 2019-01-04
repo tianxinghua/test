@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="readExcel.html" enctype="multipart/form-data" method="post" id="batchAdd" name="batchAdd" target="result"
+      onsubmit="return check();">
+     <div style=" margin: 30px;">
+<div><input id="excel_file" type="file" name="excelFile" size="50"/>
+    </form>
+    <iframe name="result" id="result" src="about:blank" frameborder="0" width="0" height="0"></iframe>
+</body>
+</html>
+<script type="text/javascript">
+    var dg;
+    $(document).ready(function () {
+        dg = frameElement.lhgDG;
+        dg.addBtn('ok', '保存', function () {
+            $("#batchAdd").submit();
+            this.disabled = true;
+        });
+    });
+
+    function success() {
+        if (dg.curWin.document.forms[0]) {
+            dg.curWin.document.forms[0].action = dg.curWin.location + "";
+            dg.curWin.document.forms[0].submit();
+        } else {
+            dg.curWin.location.reload();
+        }
+        dg.cancel();
+    }
+
+    function failed() {
+        alert("上传失败！");
+    }
+</script>

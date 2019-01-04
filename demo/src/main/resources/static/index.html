@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="local-commons/jquery-3.3.1.js"></script>
+</head>
+<body>
+<!--<p>文件上传<input type="file" id="upfile" name="upfile" accept=".xls,.xlsx"/></p><p><input type="button" value="开始上传" onclick="excel()"></p>-->
+<form action="/read/uploadExcel" method="post" enctype="multipart/form-data" onsubmit="return check();">
+    <div style="margin: 30px;"><input id="excel_file" type="file" name="filename" accept="xls" size="80"/>
+        <input id="excel_button" type="submit" value="导入Excel"/></div>
+</form>
+
+<script type="text/javascript">
+    function check() {
+        var excel_file = $("#excel_file").val();
+        if (excel_file == "" || excel_file.length == 0) {
+            alert("请选择文件路径！");
+            return false;
+        } else {      return true;
+
+        }
+    }
+    function excel(){
+        debugger;
+        var upfile=$("#upfile").val();
+        $.ajax({
+            url:"/read/uploadExcel",
+            type:"post",
+            data:upfile,
+            dataType:"json",
+            success: function (result) {
+                alert(result.desc);
+            }/*,
+            error:function(result){
+                alert(result.desc);
+            }*/
+
+        })
+    }
+</script>
+</body>
+</html>
